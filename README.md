@@ -9,27 +9,29 @@ Usage
 
 You can edit the Dockerfile to add your own Github URL
 
-To create the image `skywidesoft/cakephp`, execute the following command on the docker-cakephp folder:
+To create the image `skywidesoft/docker-cakephp`, execute the following command on the docker-cakephp folder:
 
-	docker build -t skywidesoft/cakephp .
+	docker build -t skywidesoft/docker-cakephp .
 
 You can now push your new image to the registry:
 
-	docker push skywidesoft/cakephp
+	docker push skywidesoft/docker-cakephp
 
 
 Running your CakePHP docker image
 -----------------------------------
 
-Start your image:
+Start your image (assume you are running Vagrant and CoreOS):
 
-	docker run -d -p 80:80 -p 3306:3306 skywidesoft/cakephp
+	docker run -d -p 80:80 -p 3306:3306 -v /home/core/share:/app skywidesoft/docker-cakephp
 
-	docker run -d -p 80:80 -p 3306:3306 -v /home/core/share:/app skywidesoft/cakephp
-
-Test your deployment:
+Test your deployment in CoreOS:
 
 	curl http://localhost/
+
+Test your deployment in local dev machine:
+
+	curl http://localhost:8080/
 
 You can now start using your CakePHP container!
 
