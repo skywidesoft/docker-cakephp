@@ -1,14 +1,15 @@
 FROM tutum/lamp:latest
-MAINTAINER Stefan van Gastel <stefanvangastel@gmail.com>
+MAINTAINER Clarence Ho <clarence@skywidesoft.com>
 
 # Download latest version of CakePHP into /app
-RUN rm -fr /app && git clone -b 2.6.3 https://github.com/cakephp/cakephp /app
+RUN rm -fr /app
 
 # Configure Wordpress to connect to local DB
-ADD database.php /app/app/Config/database.php
+#ADD database.php /app/app/Config/database.php
 
 # Modify permissions to allow plugin upload
-RUN chmod -R 777 /app/app/tmp
+#RUN mkdir /app/app/tmp
+#RUN chmod -R 777 /app/app/tmp
 
 # Add database setup script
 ADD create_mysql_admin_user.sh /create_mysql_admin_user.sh
