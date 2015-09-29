@@ -1,6 +1,11 @@
 FROM tutum/lamp:latest
 MAINTAINER Clarence Ho <clarence@skywidesoft.com>
 
+RUN apt-get update && \
+  	apt-get -y install php5-gd php5-imagick php5-mcrypt php5-imap php5-memcache php5-curl \
+                       imagemagick graphicsmagick && \
+    php5enmod mcrypt imap
+
 # Download latest version of CakePHP into /app
 RUN rm -fr /app
 
